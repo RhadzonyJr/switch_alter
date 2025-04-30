@@ -1,0 +1,26 @@
+name: Generate package-lock
+
+on:
+  workflow_dispatch:
+
+jobs:
+  lock:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Generate package-lock.json
+        run: npm install --package-lock-only
+
+      - name: Show package-lock.json content
+        run: |
+          echo "======== BEGIN package-lock.json ========"
+          cat package-lock.json
+          echo "======== END package-lock.json =========="
