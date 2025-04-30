@@ -10,7 +10,7 @@ import type {
 	INodeTypeBaseDescription,
 	INodeTypeDescription,
 } from 'n8n-workflow';
-import { ApplicationError, NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
+import { ApplicationError, NodeConnectionType, NodeOperationError } from 'n8n-workflow';
 
 import { capitalize } from '@utils/utilities';
 
@@ -57,7 +57,7 @@ export class SwitchV3 implements INodeType {
 				name: 'Switch',
 				color: '#506000',
 			},
-			inputs: [NodeConnectionTypes.Main],
+			inputs: [NodeConnectionType.Main],
 			outputs: `={{(${configuredOutputs})($parameter)}}`,
 			properties: [
 				{
